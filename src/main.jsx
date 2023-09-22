@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './style/style.css';
-import { createBrowserRouter } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import { RouterProvider } from 'react-router-dom';
-import Redirect from './pages/Redirect';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from '@/pages/Home/Home';
+import Redirect from '@/pages/Redirect';
+import '@/style/style.css';
 
 const router = createBrowserRouter([
   {

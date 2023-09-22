@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FiMoon, FiSun } from 'react-icons/fi'
-import { setItemData } from '../../utility/MgLocalStore'
+import { setItemData } from '@/utility/MgLocalStore'
 import { useEffect } from 'react';
 
 const Home = () => {
