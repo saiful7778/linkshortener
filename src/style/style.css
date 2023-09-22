@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .main-bg {
+    @apply w-full min-h-screen bg-slate-300 text-gray-900 overflow-x-hidden;
+    --pattern-line-color: #00000020;
+    --pattern-line-width: 1px;
+    --pattern-box-size: 20px;
+    background-image: linear-gradient(
+        var(--pattern-line-color) var(--pattern-line-width),
+        transparent var(--pattern-line-width)
+      ),
+      linear-gradient(
+        to right,
+        var(--pattern-line-color) var(--pattern-line-width),
+        transparent var(--pattern-line-width)
+      );
+    background-size: var(--pattern-box-size) var(--pattern-box-size);
+  }
+  :is(.dark .main-bg) {
+    @apply bg-gray-900 text-gray-50;
+    --pattern-line-color: #ffffff10;
+  }
+}
+
+@layer components {
+  .container-box {
+    @apply bg-gray-50 rounded-lg border-full;
+  }
+  :is(.dark .container-box) {
+    @apply bg-gray-800;
+  }
+}
+
+@layer components {
+  .border-full {
+    @apply border border-gray-400;
+  }
+  :is(.dark .border-full) {
+    @apply border-gray-700;
+  }
+}
+
+@layer components {
+  .input {
+    @apply border-full py-2 px-4 rounded-lg bg-gray-200;
+  }
+  :is(.dark .input) {
+    @apply bg-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply border border-gray-600 py-2 px-4 rounded-lg uppercase font-semibold bg-gray-200;
+  }
+  :is(.dark .btn) {
+    @apply bg-gray-700;
+  }
+}
