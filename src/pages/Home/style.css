@@ -1,0 +1,23 @@
+@tailwind components;
+@layer components {
+  .main-bg {
+    @apply w-full min-h-screen bg-slate-300 text-gray-900 overflow-x-hidden;
+    --pattern-line-color: #00000020;
+    --pattern-line-width: 1px;
+    --pattern-box-size: 20px;
+    background-image: linear-gradient(
+        var(--pattern-line-color) var(--pattern-line-width),
+        transparent var(--pattern-line-width)
+      ),
+      linear-gradient(
+        to right,
+        var(--pattern-line-color) var(--pattern-line-width),
+        transparent var(--pattern-line-width)
+      );
+    background-size: var(--pattern-box-size) var(--pattern-box-size);
+  }
+  :is(.dark .main-bg) {
+    @apply bg-gray-900 text-gray-50;
+    --pattern-line-color: #ffffff10;
+  }
+}
