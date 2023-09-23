@@ -39,7 +39,7 @@
     @apply border border-gray-400;
   }
   :is(.dark .border-full) {
-    @apply border-gray-700;
+    @apply border-gray-600;
   }
 }
 
@@ -73,5 +73,14 @@
   }
   :is(.dark .icon-btn) {
     @apply bg-gray-800;
+  }
+}
+
+@layer components {
+  .shortlink-item {
+    @apply bg-gray-300 border-full p-2 rounded-lg flex items-center justify-between;
+  }
+  :is(.dark .shortlink-item) {
+    @apply bg-gray-700;
   }
 }

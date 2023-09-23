@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { setItemData, addItemData, getItemData } from '@/utility/MgLocalStore';
 import checkHttp from '@/utility/InputCondition';
 import useInputState from '@/hooks/useInputState'
+import LinkItem from '@/components/LinkItem';
 
 const Home = () => {
   /**
@@ -49,7 +50,7 @@ const Home = () => {
     }
     return
   }
-
+  const renderAllLinks = allLinks.map((ele) => <LinkItem key={ele.id} itemId={ele.id} link={ele.value} />)
   return (
     <div className={`${theme ? 'dark' : 'light'}`}>
       <div className='main-bg'>
@@ -69,6 +70,9 @@ const Home = () => {
           </div>
           <div className="container-box mt-4 px-4 py-3">
             <h1 className="text-3xl font-semibold">All links here:</h1>
+            <div className="p-2 space-y-3">
+              {renderAllLinks}
+            </div>
           </div>
         </div>
       </div>
