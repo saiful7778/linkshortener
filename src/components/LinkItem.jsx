@@ -1,22 +1,40 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BiEdit } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+import checkHttp from '@/utility/InputCondition'
 
 const LinkItem = ({ itemId, link, clickToDelete, clickToEdit }) => {
   /**
    * edit state false means not now editing
    */
   const [edit, setEdit] = useState(false)
+  const editInputField = useRef(null)
+
+  const prassEnter = (e) => {
+    if (e.key === 'Enter') handleEdit();
+  }
+
+  const handleEdit = () => {
+    let value = editInputField.current.value;
+    let remainLink = checkHttp(value);
+    if (value.includes('.')) {
+      clickToEdit(itemId, remainLink)
+      editInputField.current.value = ''
+      setEdit(prop => !prop)
+    }
+    return
+  }
+
   const RenderLink = () => {
     if (edit) {
       return (
         <div className='flex gap-2'>
           <div className="flex-1">
-            <input className="input mr-2" type='url' placeholder={`Edit.... ${link}`} />
+            <input ref={editInputField} onKeyUp={prassEnter} className="input mr-2" type='url' placeholder={`Edit.... ${link}`} />
           </div>
-          <button className="btn" type="button">edit</button>
+          <button onClick={handleEdit} className="btn" type="button">edit</button>
         </div>
       )
     } else {

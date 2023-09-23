@@ -57,7 +57,12 @@ const Home = () => {
     const remain = removeItemData('allshortlinks', itemId)
     setAllLinks(remain);
   }
-  const renderAllLinks = allLinks.map((ele) => <LinkItem key={ele.id} itemId={ele.id} link={ele.value} clickToDelete={clickToDelete} />)
+  const clickToEdit = (itemId, itemValue) => {
+    const editedLink = allLinks.filter((ele) => ele.id !== itemId ? ele : ele.value = itemValue);
+    setAllLinks(editedLink)
+    setItemData('allshortlinks', editedLink)
+  }
+  const renderAllLinks = allLinks.map((ele) => <LinkItem key={ele.id} itemId={ele.id} link={ele.value} clickToDelete={clickToDelete} clickToEdit={clickToEdit} />)
   return (
     <div className={`${theme ? 'dark' : 'light'}`}>
       <div className='main-bg'>
