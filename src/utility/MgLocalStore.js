@@ -1,13 +1,21 @@
 const getItemData = (itemName) => {
   const itemData = localStorage.getItem(itemName);
   if (itemData) {
-    return JSON.parse(itemData);
+    try {
+      return JSON.parse(itemData);
+    } catch {
+      return itemData;
+    }
   }
   return [];
 };
 
 const setItemData = (itemName, itemData) => {
-  localStorage.setItem(itemName, JSON.stringify(itemData));
+  if (typeof itemData !== "string") {
+    localStorage.setItem(itemName, JSON.stringify(itemData));
+  } else {
+    localStorage.setItem(itemName, itemData);
+  }
 };
 
 const addItemData = (itemName, itemData) => {
