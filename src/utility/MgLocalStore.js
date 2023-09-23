@@ -31,9 +31,9 @@ const addItemData = (itemName, itemData) => {
 const removeItemData = (itemName, itemData) => {
   const remaining = getItemData(itemName);
   if (remaining) {
-    const updateData = remaining.filter((ele) => ele !== itemData);
-    setItemData(updateData);
-    return true;
+    const updateData = remaining.filter((ele) => ele.id !== itemData);
+    setItemData(itemName, updateData);
+    return updateData;
   }
   return false;
 };
