@@ -33,7 +33,7 @@ const LinkItem = ({ itemId, link, clickToDelete, clickToEdit }) => {
       <RenderLink />
       <div className="flex items-center gap-2">
         <button onClick={() => setEdit(prop => !prop)} className="p-1.5 rounded border border-gray-500" type="button"><BiEdit size={20} /></button>
-        <button className="bg-red-800 text-gray-50 p-1.5 rounded border border-gray-500" type="button"><RiDeleteBin6Line size={18} /></button>
+        <button onClick={() => clickToDelete(itemId)} className="bg-red-800 text-gray-50 p-1.5 rounded border border-gray-500" type="button"><RiDeleteBin6Line size={18} /></button>
       </div>
     </div>
   )

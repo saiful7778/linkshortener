@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FiMoon, FiSun } from 'react-icons/fi'
 import { v4 as uuid } from 'uuid';
-import { setItemData, addItemData, getItemData } from '@/utility/MgLocalStore';
+import { setItemData, addItemData, getItemData, removeItemData } from '@/utility/MgLocalStore';
 import checkHttp from '@/utility/InputCondition';
 import useInputState from '@/hooks/useInputState'
 import LinkItem from '@/components/LinkItem';
@@ -50,7 +50,14 @@ const Home = () => {
     }
     return
   }
-  const renderAllLinks = allLinks.map((ele) => <LinkItem key={ele.id} itemId={ele.id} link={ele.value} />)
+  /**
+   * item event functions
+   */
+  const clickToDelete = (itemId) => {
+    const remain = removeItemData('allshortlinks', itemId)
+    setAllLinks(remain);
+  }
+  const renderAllLinks = allLinks.map((ele) => <LinkItem key={ele.id} itemId={ele.id} link={ele.value} clickToDelete={clickToDelete} />)
   return (
     <div className={`${theme ? 'dark' : 'light'}`}>
       <div className='main-bg'>
