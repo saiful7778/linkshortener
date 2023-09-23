@@ -41,7 +41,7 @@ const LinkItem = ({ itemId, link, clickToDelete, clickToEdit }) => {
       return (
         <>
           <Link to={`/linkshortener/${itemId}`} target='_blank' className='hover:underline' rel="noreferrer">{`${window.location.origin}/linkshortener/${itemId}`}</Link>
-          <div className='text-gray-500 pointer-events-none select-none fade w-[335px] md:w-[490px] whitespace-nowrap overflow-hidden'>{link}</div>
+          <div className='text-gray-500 pointer-events-none select-none fade w-[335px] md:w-[450px] whitespace-nowrap overflow-hidden'>{link}</div>
         </>
       )
     }
