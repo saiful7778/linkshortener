@@ -78,9 +78,30 @@
 
 @layer components {
   .shortlink-item {
-    @apply bg-gray-300 border-full p-2 rounded-lg flex items-center justify-between;
+    @apply bg-gray-300 border-full p-2 rounded-lg flex flex-col xl:flex-row gap-3 items-start md:items-center justify-between overflow-hidden;
   }
   :is(.dark .shortlink-item) {
     @apply bg-gray-700;
+  }
+}
+
+@layer components {
+  .fade {
+    border-radius: 8px;
+    position: relative;
+  }
+  .fade::before {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    right: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 90%,
+      rgb(55 65 81) 100%
+    );
   }
 }

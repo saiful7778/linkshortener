@@ -66,15 +66,15 @@ const Home = () => {
   return (
     <div className={`${theme ? 'dark' : 'light'}`}>
       <div className='main-bg'>
-        <div className="container w-3/4 mx-auto p-3">
+        <div className="container md:w-3/4 mx-auto p-3">
           <div className="container-box px-4 py-3 relative">
-            <div className="flex items-center gap-3">
-              <div className="flex-1">
+            <div className="flex flex-col md:flex-row items-start gap-3">
+              <div className="flex-1 w-full">
                 <input value={inputField.value} onChange={(e) => inputField.onChange(e.target.value)} onKeyUp={pressEnter} className="input w-full" type="url" placeholder="Enter url...." />
               </div>
               <button onClick={handleAddClick} className="btn" type="button">add</button>
             </div>
-            <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
+            <div className="absolute right-4 md:-right-12 top-16 md:top-1/2 md:-translate-y-1/2 z-10">
               <button onClick={handleTheme} className='icon-btn' type="button">
                 {theme ? <FiSun /> : <FiMoon />}
               </button>
