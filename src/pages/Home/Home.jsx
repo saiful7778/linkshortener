@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FiMoon, FiSun } from 'react-icons/fi'
-import { setItemData } from '@/utility/MgLocalStore';
+import { v4 as uuid } from 'uuid';
+import { setItemData, addItemData, getItemData } from '@/utility/MgLocalStore';
 import checkHttp from '@/utility/InputCondition';
 import useInputState from '@/hooks/useInputState'
 
@@ -19,8 +20,10 @@ const Home = () => {
   const inputField = useInputState('')
 
   useEffect(() => {
-    const prevTheme = localStorage.getItem('siteTheme') === 'dark' ? true : false;
-    setTheme(prevTheme)
+    const prevTheme = getItemData('siteTheme') === 'dark' ? true : false;
+    setTheme(prevTheme);
+    setAllLinks(getItemData('allshortlinks'))
+
   }, []);
   const handleTheme = () => {
     setTheme(prop => !prop)
@@ -39,10 +42,14 @@ const Home = () => {
     let value = inputField.value;
     let remainLink = checkHttp(value);
     if (value.includes('.')) {
-      console.log(remainLink);
+      const itemObj = { id: uuid().slice(0, 8), value: remainLink };
+      setAllLinks([...allLinks, itemObj])
+      addItemData('allshortlinks', itemObj)
+      inputField.onChange('')
     }
     return
   }
+
   return (
     <div className={`${theme ? 'dark' : 'light'}`}>
       <div className='main-bg'>
