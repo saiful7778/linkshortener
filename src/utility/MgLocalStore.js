@@ -7,16 +7,16 @@ const getItemData = (itemName) => {
 };
 
 const setItemData = (itemName, itemData) => {
-  localStorage.setItem(itemName, itemData);
+  localStorage.setItem(itemName, JSON.stringify(itemData));
 };
 
 const addItemData = (itemName, itemData) => {
   const listData = getItemData(itemName);
   if (listData) {
     listData.push(itemData);
-    setItemData(itemName, JSON.stringify(itemData));
+    setItemData(itemName, listData);
   } else {
-    setItemData(itemName, JSON.stringify(itemData));
+    setItemData(itemName, [itemData]);
   }
 };
 
